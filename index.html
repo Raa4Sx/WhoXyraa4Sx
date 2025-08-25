@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Who Xyraa4Sx?</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a0a2e, #16213e, #0f3460);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(0, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100px);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            padding: 30px;
+            background: rgba(10, 10, 46, 0.7);
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            z-index: 1;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #00ffff;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: #a0d2eb;
+            margin-bottom: 20px;
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid #00ffff;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+            margin-right: 20px;
+        }
+
+        .profile-info h2 {
+            color: #00ffff;
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+
+        .profile-info p {
+            color: #a0d2eb;
+            font-size: 1.1rem;
+        }
+
+        .poll-container {
+            margin-top: 30px;
+        }
+
+        .poll-title {
+            font-size: 1.5rem;
+            color: #00ffff;
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+        }
+
+        .skill-item {
+            margin-bottom: 20px;
+            background: rgba(15, 52, 96, 0.5);
+            border-radius: 10px;
+            padding: 15px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.3);
+            border: 1px solid rgba(0, 255, 255, 0.5);
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .skill-name {
+            font-size: 1.2rem;
+            color: #fff;
+            display: flex;
+            align-items: center;
+        }
+
+        .skill-icon {
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+
+        .vote-btn {
+            background: linear-gradient(45deg, #0f3460, #16213e);
+            border: 1px solid #00ffff;
+            color: #00ffff;
+            padding: 5px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .vote-btn:hover {
+            background: rgba(0, 255, 255, 0.2);
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        }
+
+        .vote-btn.voted {
+            background: rgba(0, 255, 255, 0.3);
+        }
+
+        .progress-bar {
+            height: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .progress {
+            height: 100%;
+            background: linear-gradient(90deg, #00ffff, #0080ff);
+            border-radius: 5px;
+            width: 0%;
+            transition: width 1s ease;
+        }
+
+        .vote-count {
+            text-align: right;
+            font-size: 0.9rem;
+            color: #a0d2eb;
+            margin-top: 5px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #a0d2eb;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 600px) {
+            .profile {
+                flex-direction: column;
+            }
+            
+            .profile-img {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+    
+    <div class="container">
+        <div class="header">
+            <h1>Who Xyraa4Sx?</h1>
+            <p>Xyraa is a 23-year-old woman</p>
+        </div>
+        
+        <div class="profile">
+            <img src="https://files.catbox.moe/ziwobs.jpg" alt="Profile" class="profile-img">
+            <div class="profile-info">
+                <h2>Xyraa4Sx/Raa4YouuSx</h2>
+                <p>Anonymous Location And Programer Expert</p>
+            </div>
+        </div>
+        
+        <div class="poll-container">
+            <h3 class="poll-title">Apa Yang Kamu Tahu Tentang Skil Xyraa4Sx?</h3>
+            
+            <div class="skill-item">
+                <div class="skill-header">
+                    <div class="skill-name">
+                        <span class="skill-icon">🔒</span> HTML Security
+                    </div>
+                    <button class="vote-btn" onclick="vote('html')">Vote</button>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress" id="html-progress"></div>
+                </div>
+                <div class="vote-count" id="html-count">0 votes</div>
+            </div>
+            
+            <div class="skill-item">
+                <div class="skill-header">
+                    <div class="skill-name">
+                        <span class="skill-icon">🐍</span> Python Security
+                    </div>
+                    <button class="vote-btn" onclick="vote('python')">Vote</button>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress" id="python-progress"></div>
+                </div>
+                <div class="vote-count" id="python-count">0 votes</div>
+            </div>
+            
+            <div class="skill-item">
+                <div class="skill-header">
+                    <div class="skill-name">
+                        <span class="skill-icon">📜</span> JavaScript Security
+                    </div>
+                    <button class="vote-btn" onclick="vote('javascript')">Vote</button>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress" id="javascript-progress"></div>
+                </div>
+                <div class="vote-count" id="javascript-count">0 votes</div>
+            </div>
+            
+            <div class="skill-item">
+                <div class="skill-header">
+                    <div class="skill-name">
+                        <span class="skill-icon">🎨</span> CSS Security
+                    </div>
+                    <button class="vote-btn" onclick="vote('css')">Vote</button>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress" id="css-progress"></div>
+                </div>
+                <div class="vote-count" id="css-count">0 votes</div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Total Votes: <span id="total-votes">0</span> | Polling akan berakhir dalam 24 jam</p>
+        </div>
+    </div>
+
+    <script>
+        // Create particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random size between 3px and 8px
+                const size = Math.random() * 5 + 3;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Random position
+                particle.style.left = `${Math.random() * 100}%`;
+                
+                // Random animation delay
+                particle.style.animationDelay = `${Math.random() * 15}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        // Initialize votes
+        const votes = {
+            html: 0,
+            python: 0,
+            javascript: 0,
+            css: 0
+        };
+        
+        // Check if user has voted
+        let userVoted = false;
+        
+        // Vote function
+        function vote(skill) {
+            if (userVoted) {
+                return;
+            }
+            
+            votes[skill]++;
+            userVoted = true;
+            
+            // Update UI
+            updatePollResults();
+            
+            // Disable all vote buttons
+            const buttons = document.querySelectorAll('.vote-btn');
+            buttons.forEach(btn => {
+                btn.classList.add('voted');
+                btn.textContent = 'Voted';
+                btn.disabled = true;
+            });
+        }
+        
+        // Update poll results
+        function updatePollResults() {
+            const totalVotes = Object.values(votes).reduce((sum, count) => sum + count, 0);
+            
+            // Update total votes
+            document.getElementById('total-votes').textContent = totalVotes;
+            
+            // Update each skill
+            Object.keys(votes).forEach(skill => {
+                const count = votes[skill];
+                const percentage = totalVotes > 0 ? (count / totalVotes) * 100 : 0;
+                
+                document.getElementById(`${skill}-count`).textContent = `${count} votes (${percentage.toFixed(1)}%)`;
+                document.getElementById(`${skill}-progress`).style.width = `${percentage}%`;
+            });
+        }
+        
+        // Initialize
+        window.onload = function() {
+            createParticles();
+            updatePollResults();
+        };
+    </script>
+</body>
+</html>
